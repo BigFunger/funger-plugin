@@ -1,7 +1,7 @@
 {
-  "name": "k4-plugin-dancing-bear",
+  "name": "funger-plugin",
   "version": "0.1.0",
-  "description": "kibana dancing bear plugin",
+  "description": "funger plugin test",
   "repository": {
     "type": "git",
     "url": "http://website.git"
@@ -12,5 +12,5 @@
   },
   "devDependencies": {
   },
-  "license": "Apache-2.0"
+  "license": "MIT"
 }
