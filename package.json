@@ -1,0 +1,16 @@
+{
+  "name": "k4-plugin-dancing-bear",
+  "version": "0.1.0",
+  "description": "kibana dancing bear plugin",
+  "repository": {
+    "type": "git",
+    "url": "http://website.git"
+  },
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "license": "Apache-2.0"
+}
