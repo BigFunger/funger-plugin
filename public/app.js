@@ -3,14 +3,14 @@ require('ui/chrome')
   logo: 'url(/plugins/funger-plugin/logo.png) center no-repeat',
   smallLogo: 'url(/plugins/funger-plugin/logo.png) center no-repeat',
 })
-.setNavBackground('#00FF00')
+.setNavBackground('#687954')
 .setTabDefaults({
-  activeIndicatorColor: '#FF00FF'
+  activeIndicatorColor: '#99AD8C'
 })
 .setTabs([
   {
     id: '',
-    title: 'jimtest'
+    title: 'A Simple Reminder'
   }
 ])
 .setRootTemplate(require('plugins/funger-plugin/main.html'));
