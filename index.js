@@ -6,7 +6,8 @@ module.exports = function (kibana) {
         description: 'reminder that he could kill you at any moment.',
         icon: 'http://mediabuzz.monster.com/nfs/mediabuzz/attachment_images/0000/5129/guerilla_marketing.jpg',
         main: 'plugins/funger-plugin/app',
-        autoload: kibana.autoload.styles
+        autoload: kibana.autoload.require.concat(
+        )
       }
     }
   });

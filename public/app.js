@@ -14,3 +14,12 @@ require('ui/chrome')
   }
 ])
 .setRootTemplate(require('plugins/funger-plugin/main.html'));
+
+require('ui/modules')
+.directive('fungerApp', function () {
+  return {
+    controller: function ($scope) {
+      $scope.test = 'Hello!';
+    };
+  };
+});
