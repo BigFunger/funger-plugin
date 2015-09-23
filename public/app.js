@@ -20,6 +20,6 @@ require('ui/modules')
   return {
     controller: function ($scope) {
       $scope.test = 'Hello!';
-    };
+    }
   };
 });
