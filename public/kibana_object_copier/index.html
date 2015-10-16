@@ -1,0 +1,58 @@
+<kibana-object-copier-app>
+  <h1>Object Copier</h1>
+  <form ng-submit="submit()">
+    <div>
+      <label for="selectedType">Object type: </label>
+      <select
+        id="selectedType"
+        class="form-control"
+        ng-options="type as type for type in types"
+        ng-model="type">
+        <option />
+      </select>
+    </div>
+    <div>
+      <label for="selectedObject">Source object: </label>
+      <select
+        id="selectedObject"
+        class="form-control"
+        ng-options="object.title for object in objects track by object._id"
+        ng-model="object">
+        <option />
+      </select>
+    </div>
+    <div>
+      <label for="numberOfCopies">Number of copies: </label>
+      <input
+        type="text"
+        id="numberOfCopies"
+        class="form-control"
+        ng-model="numberOfCopies" />
+    </div>
+    <div class="submit-section">
+      <input
+        type="submit"
+        value="DO EEEET!"
+        class="btn btn-primary submit-button" />
+
+<!--       <input
+        type="button"
+        value="Click Me"
+        class="btn btn-primary submit-button"
+        ng-click="testFunction()" /> -->
+    </div>
+  </form>
+
+  <div class="status">
+    <div
+      ng-if="state === 'success'"
+      class="alert alert-info ng-scope">
+        Successfully copied the {{type}}: [{{object.title}}] {{numberOfCopies}} time{{numberOfCopies !== 1 ? 's' : ''}}!
+    </div>
+    <div
+      ng-if="state === 'fail'"
+      class="alert alert-warning ng-scope">
+        Copy failed.
+    </div>
+  </div>
+</kibana-object-copier-app>

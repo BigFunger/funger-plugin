@@ -1,14 +1,29 @@
+var join = require('path').join;
+var requireAllAndApply = require('./server/lib/require_all_and_apply');
+
 module.exports = function (kibana) {
   return new kibana.Plugin({
+    require: ['kibana', 'elasticsearch'],
     uiExports: {
       app: {
-        title: 'fungers plugin',
+        title: 'Funger\'s Plugin',
         description: 'reminder that he could kill you at any moment.',
-        icon: 'http://mediabuzz.monster.com/nfs/mediabuzz/attachment_images/0000/5129/guerilla_marketing.jpg',
+        icon: 'plugins/funger-plugin/funger.svg',
         main: 'plugins/funger-plugin/app',
-        autoload: kibana.autoload.require.concat(
-        )
+        injectVars: function (server, options) {
+          var config = server.config();
+          return {
+            kbnIndex: config.get('kibana.index'),
+            esShardTimeout: config.get('elasticsearch.shardTimeout'),
+            esApiVersion: config.get('elasticsearch.apiVersion')
+          };
+        },
+        // by default, it autoloads 'EVERYTHING'
+        //autoload: kibana.autoload.styles,
       }
+    },
+    init: function (server, options) {
+      requireAllAndApply(join(__dirname, 'server', 'routes', '**', '*.js'), server);
     }
   });
 };

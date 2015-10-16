@@ -1,0 +1,41 @@
+<thaumcraft-solver-app>
+  <h1>Thaumcraft Solver</h1>
+  <form ng-submit="submit()">
+    <div>
+      <label for="sourceAspect">Source aspect: </label>
+      <select
+        id="sourceAspect"
+        ng-options="item as item.name for item in filteredAspects track by item.name"
+        ng-model="targetAspect"
+        class="form-control">
+        <option />
+      </select>
+    </div>
+    <div>
+      <label for="sourceAspect">Target aspect: </label>
+      <select
+        id="targetAspect"
+        ng-options="item as item.name for item in filteredAspects track by item.name"
+        ng-model="sourceAspect"
+        class="form-control">
+        <option />
+      </select>
+    </div>
+    <div>
+      <label for="iterations">Iterations: </label>
+      <input
+        id="iterations"
+        type="text"
+        ng-model="iterations"
+        class="form-control" />
+    </div>
+    <div class="solution">
+      <div class="aspect" ng-repeat="aspect in result track by $index">
+        <div class="icon" style="background-position: {{getBackgroundPosition(aspect)}};">&nbsp;</div>
+        <div class="name">
+          <span>{{aspect.name}}</span>
+        </div>
+      </div>
+    </div>
+  </form>
+</thaumcraft-solver-app>

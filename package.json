@@ -6,11 +6,14 @@
     "type": "git",
     "url": "http://website.git"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
+    "angular-resource": "1.2.28",
+    "bluebird": "^2.10.2",
+    "glob": "^5.0.15",
+    "requirefrom": "^0.2.0",
+    "uuid": "^2.0.1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "license": "MIT"
 }

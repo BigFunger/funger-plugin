@@ -1,0 +1,34 @@
+require('plugins/funger-plugin/funger.less');
+
+var app = require('ui/modules')
+.get('app/fungerPlugin', [])
+.directive('thaumcraftSolver', function () {
+  return {
+    restrict: 'E',
+    scope: true,
+    controller: function ($scope) {
+      var aspects = $scope.aspects = require('plugins/funger-plugin/thaumcraft/aspects');
+      var findResult = require('plugins/funger-plugin/thaumcraft/solver');
+
+      $scope.sourceAspect = '';
+      $scope.targetAspect = '';
+      $scope.iterations = 1;
+
+      $scope.$watch('sourceAspect', generateResult);
+      $scope.$watch('targetAspect', generateResult);
+      $scope.$watch('iterations', generateResult);
+
+      function generateResult(newVal, oldVal) {
+        $scope.result = '';
+
+        if (!$scope.sourceAspect) return;
+        if (!$scope.targetAspect) return;
+
+        console.log('generateResult: ', $scope.sourceAspect.name, $scope.targetAspect.name, $scope.iterations);
+
+        $scope.result = findResult($scope.sourceAspect.name, $scope.targetAspect.name, $scope.iterations);
+      }
+    }
+  };
+});
+
