@@ -1,0 +1,59 @@
+<h1>{{mode}}</h1>
+
+<recipe-lookup ng-show="mode === 'lookup'"></recipe-lookup>
+<material-editor ng-show="mode === 'edit'"></material-editor>
+
+
+<!-- <div ng-show="showMain">
+  <h1>Recipe Calculator</h1>
+  <div>
+    <label for="search-field">Search: </label>
+    <input
+      type="text"
+      id="search-field"
+      class="form-control"
+      ng-model="searchText" />
+  </div>
+  <div>
+    <label for="recipe">Recipe: </label>
+    <select
+      id="recipe"
+      class="form-control"
+      ng-options="recipe.name for recipe in recipes track by recipe._id"
+      ng-model="recipe">
+      <option />
+    </select>
+  </div>
+  <div ng-show="editId">
+    <material-editor id="editId" />
+  </div>
+  <div ng-show="recipe">
+    <h2>Materials</h2>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Material</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="material in materials">
+          <td>
+            {{material.name}}
+            <span ng-hide="material.found">
+              &nbsp;
+              <a href="" ng-click="addMaterial(material)">add</a>
+            </span>
+          </td>
+          <td>{{material.count}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div ng-show="recipe">
+    <h2>Total Materials</h2>
+  </div>
+
+</div>
+  <input type="button" value="click me!" ng-click="testFunction()" />
+ -->

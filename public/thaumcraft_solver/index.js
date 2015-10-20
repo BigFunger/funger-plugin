@@ -55,7 +55,6 @@ define(function (require) {
           var x = -1 * (xIndex*64) - 4;
           var y = -1 * (yIndex*64) - 4;
 
-          console.log(`name: ${aspect.name}, index: ${index}, xIndex: ${xIndex}, yIndex: ${yIndex}, x: ${x}, y: ${y}`);
           return `${x}px ${y}px`;
         }
 

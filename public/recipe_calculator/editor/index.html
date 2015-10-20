@@ -1,0 +1,123 @@
+<recipe-calculator-editor>
+  <h1>Recipe Editor</h1>
+  <form ng-submit="saveRecipe()">
+    <div>
+      <label for="id">Id:</label>
+      <input
+        type="text"
+        id="id"
+        class="form-control"
+        ng-model="_id" />
+    </div>
+    <div>
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        ng-model="name" />
+    </div>
+    <div>
+      <label for="name">Amount:</label>
+      <input
+        type="text"
+        id="amount"
+        class="form-control"
+        ng-model="amount" />
+    </div>
+    <div>
+      <input
+        id="basic"
+        type="checkbox"
+        ng-model="basic" />
+      <label for="basic"> Basic</label>
+    </div>
+    <div>
+      <input
+        id="unlimited"
+        type="checkbox"
+        ng-model="unlimited" />
+      <label for="unlimited"> Is not consumed when used</label>
+    </div>
+    <div class="materials_list" ng-hide="basic">
+      <div>
+        <label for="material1">Material 1:</label>
+        <input
+          type="text"
+          id="material1"
+          class="form-control"
+          ng-model="material1" />
+      </div>
+      <div>
+        <label for="material2">Material 2:</label>
+        <input
+          type="text"
+          id="material2"
+          class="form-control"
+          ng-model="material2" />
+      </div>
+      <div>
+        <label for="material3">Material 3:</label>
+        <input
+          type="text"
+          id="material3"
+          class="form-control"
+          ng-model="material3" />
+      </div>
+      <div>
+        <label for="material4">Material 4:</label>
+        <input
+          type="text"
+          id="material4"
+          class="form-control"
+          ng-model="material4" />
+      </div>
+      <div>
+        <label for="material5">Material 5:</label>
+        <input
+          type="text"
+          id="material5"
+          class="form-control"
+          ng-model="material5" />
+      </div>
+      <div>
+        <label for="material6">Material 6:</label>
+        <input
+          type="text"
+          id="material6"
+          class="form-control"
+          ng-model="material6" />
+      </div>
+      <div>
+        <label for="material7">Material 7:</label>
+        <input
+          type="text"
+          id="material7"
+          class="form-control"
+          ng-model="material7" />
+      </div>
+      <div>
+        <label for="material8">Material 8:</label>
+        <input
+          type="text"
+          id="material8"
+          class="form-control"
+          ng-model="material8" />
+      </div>
+      <div>
+        <label for="material9">Material 9:</label>
+        <input
+          type="text"
+          id="material9"
+          class="form-control"
+          ng-model="material9" />
+      </div>
+    </div>
+    <div class="submit_section">
+      <input
+        type="submit"
+        value="Save"
+        class="btn btn-primary submit-button" />
+    </div>
+  </form>
+</recipe-calculator-lookup>

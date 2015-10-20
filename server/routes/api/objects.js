@@ -1,7 +1,8 @@
 module.exports = function(server) {
-  var client = server.plugins.elasticsearch.client;
-  var uuid = require('uuid');
-  var _ = require('lodash');
+  const client = server.plugins.elasticsearch.client;
+  const uuid = require('uuid');
+  const _ = require('lodash');
+  const MAX_DOCS = 99999;
 
   server.route({
     method: 'GET',
@@ -24,7 +25,7 @@ module.exports = function(server) {
   function objectsHandler(request, reply) {
     client.search({
       index: '.kibana',
-      size: 99999,
+      size: MAX_DOCS,
       sort: '_uid',
       type: request.params.type
     })
@@ -39,7 +40,7 @@ module.exports = function(server) {
   }
 
   function copyHandler(request, reply) {
-    var payload = request.payload;
+    const payload = request.payload;
 
     client.get({
       index: '.kibana',
@@ -49,20 +50,17 @@ module.exports = function(server) {
     .then(function (sourceDoc){
       return copyObject(sourceDoc, payload);
     })
-    .catch((err) => {
-      console.log('Error!');
-      console.log(err);
-    })
+    .catch(reply)
     .then(reply);
   }
 
   function copyObject(sourceDoc, payload) {
-    var body = [];
+    let body = [];
 
-    for (var i=0;i<payload.numberOfCopies;i++) {
-      var uid = uuid.v4();
-      var id = `${sourceDoc._id}_${uid}`;
-      var title = `${sourceDoc._source.title} ${uid}`;
+    for (let i=0;i<payload.numberOfCopies;i++) {
+      const uid = uuid.v4();
+      const id = `${sourceDoc._id}_${uid}`;
+      const title = `${sourceDoc._source.title} ${uid}`;
 
       body.push({
         index: { _id: id }

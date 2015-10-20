@@ -31,10 +31,10 @@
     </div>
     <div class="solution">
       <div class="aspect" ng-repeat="aspect in result track by $index">
-        <div class="icon" style="background-position: {{getBackgroundPosition(aspect)}};">&nbsp;</div>
-        <div class="name">
+        <div class="icon" style="background-position: {{getBackgroundPosition(aspect)}};" title="{{aspect.name}}">&nbsp;</div>
+<!--         <div class="name">
           <span>{{aspect.name}}</span>
-        </div>
+        </div> -->
       </div>
     </div>
   </form>

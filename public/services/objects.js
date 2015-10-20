@@ -31,7 +31,7 @@ define(function (require) {
         // });
 
         var objects = result.data.hits.hits.map(function(hit) {
-          // ask why i can't do hit[_id];
+          // ask why i can't do hit[_id]; because it should be hit['_id'], dumbass.
           return {
             '_id' : hit._id,
             'title' : hit._source.title
