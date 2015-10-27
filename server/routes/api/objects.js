@@ -4,10 +4,18 @@ module.exports = function(server) {
   const _ = require('lodash');
   const MAX_DOCS = 99999;
 
+
   server.route({
     method: 'GET',
     path: '/funger-plugin/api/objects/{type}',
-    handler: objectsHandler
+    handler(request, reply) {
+      reply(client.search({
+        index: '.kibana',
+        size: MAX_DOCS,
+        sort: '_uid',
+        type: request.params.type
+      }));
+    }
   });
 
   server.route({
@@ -21,16 +29,6 @@ module.exports = function(server) {
     path: '/funger-plugin/api/copy',
     handler: copyHandler
   });
-
-  function objectsHandler(request, reply) {
-    client.search({
-      index: '.kibana',
-      size: MAX_DOCS,
-      sort: '_uid',
-      type: request.params.type
-    })
-    .then(reply);
-  }
 
   function typesHandler(request, reply) {
     client.indices.getMapping({

@@ -2,7 +2,9 @@ define(function (require) {
   var _ = require('lodash');
   var module = require('ui/modules').get('app/recipe_calculator', []);
 
-  module.service('fungerPluginMinecraft', function ($http, Promise) {
+  module.service('fungerPluginMinecraft', function ($http, Private) {
+    var getTotalMaterials = Private(require('plugins/funger-plugin/services/lib/total_materials'));
+
     return {
       recipeSearch: recipeSearch,
       getMaterials: getMaterials,
@@ -44,7 +46,8 @@ define(function (require) {
             '_id' : recipeDoc._id,
             'name' : recipeDoc._source.name,
             'basic' : recipeDoc._source.basic,
-            'found' : true
+            'found' : true,
+            'amount' : recipeDoc._source.amount
           });
         } else {
           var childMaterials = materialDocs.map(function(materialDoc) {
@@ -53,13 +56,15 @@ define(function (require) {
                 '_id' : materialDoc._id,
                 'name' : materialDoc._source.name,
                 'basic' : materialDoc._source.basic,
-                'found' : true
+                'found' : true,
+                'amount' : materialDoc._source.amount
               };
             } else {
               return {
                 '_id' : materialDoc._id,
                 'name' : materialDoc._id,
-                'found' : false
+                'found' : false,
+                'amount' : 1
               };
             }
           });
@@ -74,47 +79,6 @@ define(function (require) {
           return materials;
         }
       });
-    }
-
-    function getTotalMaterials(recipeId) {
-      return iteration(recipeId)
-      .then((totalMaterials) => {
-        // console.log('****************************************************');
-        // console.log(totalMaterials);
-        // console.log('****************************************************');
-        //return totalMaterials;
-
-        var groupedTotal = groupMaterial(totalMaterials);
-        //console.log(groupedTotal);
-        return groupedTotal;
-      });
-
-      function iteration(recipeId) {
-        var total = [];
-
-        return getMaterials(recipeId)
-        .then((materials) => {
-          var promises = [];
-
-          materials.forEach((material) => {
-            if (!material.found || material.basic) {
-              total.push(material);
-            } else {
-              promises.push(iteration(material._id));
-            }
-          });
-
-          return Promise.all(promises)
-          .then((resultsArray) => {
-            resultsArray.forEach((result) => {
-              var parentId = recipeId;
-              total = total.concat(result);
-            });
-
-            return total;
-          });
-        });
-      }
     }
 
     function groupMaterial(arr) {

@@ -24,6 +24,7 @@
       <thead>
         <tr>
           <th>Material</th>
+          <th>Id</th>
           <th>Count</th>
         </tr>
       </thead>
@@ -36,6 +37,7 @@
               <a ng-href="#/recipe_calculator/editor/{{material._id}}">add</a>
             </span>
           </td>
+          <td>{{material._id}}</td>
           <td>{{material.count}}</td>
         </tr>
       </tbody>
@@ -46,12 +48,15 @@
     <table class="table table-condensed">
       <thead>
         <tr>
+          <th>Step</th>
           <th>Material</th>
+          <th>Id</th>
           <th>Count</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="material in totalMaterials">
+        <tr ng-repeat="material in totalMaterials.used">
+          <td>{{material.step}}</td>
           <td>
             {{material.name}}
             <span ng-hide="material.found">
@@ -59,6 +64,7 @@
               <a ng-href="#/recipe_calculator/editor/{{material._id}}">add</a>
             </span>
           </td>
+          <td>{{material._id}}</td>
           <td>{{material.count}}</td>
         </tr>
       </tbody>

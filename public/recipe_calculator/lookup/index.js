@@ -42,8 +42,9 @@ define(function (require) {
           });
 
           fungerPluginMinecraft.getTotalMaterials($scope.recipe._id)
-          .then((totalMaterials) => {
-            $scope.totalMaterials = totalMaterials;
+          .then((result) => {
+            $scope.totalMaterials = result;
+            console.log(result);
           });
         }
 
